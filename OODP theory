@@ -1,0 +1,788 @@
+>OOP based on modelling data
+
+Trying to simulate real life things into programming
+OOP gives reusability and maintainability
+
+>Benefits of OOP are listed 
+
+->Easily upgrade from small systems to large
+->Message passing techniques makes communication easier
+->Maintain cost is less
+->Simple implementation
+
+>Object is instance of class
+
+->represent real life entity with attributes and functionality
+->occupies memory
+
+>Class is collection of objects
+
+->here we define methods and variables to be utilized by the objects
+->does not occupy memory location
+
+without class object doesn't exist
+without object we can use only static function of class
+A person who have saving bank account :: here person is the object and saving bank is the class
+
+>4 pillars of OOPS
+
+.encapsulation
+
+    ->hiding data for purpose of protection
+    ->writing data and function in a single unit
+    eg->while driving the car it hides the details of how fuel is burning,generate electricity,or rotate the tires
+
+.polymorphism
+
+    ->More than one function with same name but different working.
+    ->many forms
+    ->two types of polymorphism
+    -->compile time polymorphism (static)/early binding
+    1. Function overloading
+    2. Operator overloading
+    -->run time polymorphism (dynamic) /late binding
+    1.Virtual functions
+
+.abstraction 
+
+    ->hides implementation details by just presenting the feature to the outside world
+    ->reduce code complexity
+    eg->database system hides the details of how data is stored and created
+
+.inheritance
+
+    ->mechanism of deriving a new class from an existing class
+    ->Types of inheritance
+    -->single level
+    -->multi level
+    -->multiple level //parrot aur sparrow both comes under bird i.e multiple base one child class
+    subclass derived from 2 base classes
+    -->hierarchial level // world ke below india usa comes i.e one base multiple child
+    -->hybrid level
+
+>Abstract Data Type
+
+Abstract data type allows you to think what you can do to a collection of data, independently of how you can do it.
+It allows you to develop each data structure in relative isolation from the rest of the solution
+
+    -->Abstract data type is composed of collection of data and set of operations and errors (how to deal with them)
+    -->It is only concerned with how the data is represented and how the operations will be performed rather than implementing or constructing them.
+    -->Implementation of an abstract data type includes choosing a particular data structure.
+
+>state ->cumulative results of an object's behavior
+
+>behavior ->how an object acts and reacts
+-->modifier alters the state of an object
+-->selector access the state of an object but does not alter
+-->constructor creates an object and initialized its state
+-->destructor destroys an object free its memory
+
+>identity -> Distinguishes from all other objects
+
+>Class declaration
+
+```
+class class_name
+{
+    access specifier:
+    data members;
+    member functions();
+};
+```
+
+>Accessing data members
+
+private ->only members of same class have accessibility
+-->It cannot be accessed from outside the class, only the friend function can access private members.
+-->If we try to access it outside the class, it will give a compile time error.
+public ->accessible from outside the class
+protected -> a function is defined inside the class it is protected they cannot be accessed from outside the class but can we accessed from derived class
+
+>Some things to be noted.
+
+Data members are kept private 
+methods are kept public.
+classes are virtual
+
+Member functions can be defined inside or outside the class.
+While we are defining it outside the class, we have to use a scope resolution operator along with the class name and function name.
+
+>Abstract Class
+
+-->Abstract class contains a pure virtual function.
+
+-->Abstract class cannot be instantiated means objects cannot be created, but the reference of abstract class can be created
+
+-->Abstract class can also have normal functions and variables
+
+-->Abstract class mainly use for up-casting so that The derived class can be use its interface.
+
+<b>pure virtual function is virtual function has no definition and start with virtual keyword and ends with =0</b>
+
+>Constructor
+
+-->Class name is same name as the constructor name. 
+-->It is used to construct an. initialize all the data members.
+-->Automatically called when an object is created
+
+```
+class A
+{
+    int i;
+    public:
+    A();  //declare const
+};
+A::A()  //defining it outside
+{
+    i=1;
+}
+```
+
+>Types of constructor
+
+1. Default Constructor
+
+No parameters
+
+2. Parameterized Constructor
+
+Have parameters
+
+3. Copy Constructor
+
+It takes reference to an object of the same class as an argument
+
+>There are 3 ways to call a constructor
+
+    :Implicit call calls the constructor by its object  
+    circle c(3)
+    :Explicit call calls the constructor by the parameter.  
+    circle c=circle(3)
+    :Dynamic initialization  memory is allocated to the object using default constructor and then parameterized constructor is called to initialize the data member;
+    circle c;
+    float x;
+    cin>>x;
+    c=circle(x);
+
+>Some things to be noted while.Making a constructor.
+
+    -->They should be declared in public section.
+    -->They do not have a return type, not even void.
+    -->They get automatically involved when objects are created.
+    -->They cannot be inherited through derived class.
+    -->Like other function, they can have default arguments.
+    -->Constructors cannot be virtual.
+
+>Destructor
+
+    -->As the name implies, it is used to destroy that have been created by the constructor.
+    -->Its name is same as the class name, but it is preceded by our tilde sign.
+    -->It cleans up the storage that is no longer accessed
+
+>Default parameter, also known as optional parameter. 
+
+It is a function parameter that has default values provided to it.If the user does not provide any value, default value will be used.
+
+```
+void print(int x=10,int y);<Error>
+All default parameter must be the rightmost.
+void print(int x,int y=10) <Correct Way>
+```
+
+>Dynamic Memory Allocation //size determined at run time
+
+    -->A new operator creates a memory and returns memory address to the pointer.
+    <syntax> new datatype;
+    -->A delete operator de-allocates memory 
+    <syntax> delete pointer name;
+
+>Inheritances 
+
+derived class inherits the properties of base class
+-->base class (super class /parent class)
+-->derived class (sub class/child class)
+
+inheritance avoids duplicates and increase reusability of inheritance
+it also follows transitive property
+
+>Modes of inheritance 
+
+      private is not inherited in derived classes
+
+      in a protected derived class,
+      -->protected remains protected
+      -->public becomes protected
+
+      in a private derived classes 
+      -->protected becomes private
+      -->public also becomes private
+
+      in a public derived class,
+      -->protected remains protected
+      -->public remains public
+
+>Function overloading
+
+Two ways-
+-->method/function overloading 
+2 or more functions with same name different parameters
+-->method/function overriding. 
+same name with same parameters
+inheritance has to be used for function overriding
+Cannot be done within a class
+
+>Operator overloading
+
+-->Operator is overloaded to give user defined meaning to it.
+-->operator is defined inside the class 
+-->Only existing member can be overloaded we can't create our own operator to overload
+-->Operator overload must have at least one operand of user defined type
+it follows syntax rules of original operator 
+
+>some operators cant be overloaded 
+member access operator (.)
+Pointer to member access operator (.*)
+scope resolution operator (::)
+size operator (sizeof)
+Ternary operator (?:)
+
+```
+class class_name
+{
+    public:
+    return_type operator sign(args)
+    {
+    }
+};
+```
+>Virtual Functions
+
+It is a member function which is declared within the base class and is redefined by the derived class.
+When you refer to a derived class object using a pointer reference to base class, you can call a virtual function for that object and execute a derived class function.
+<p>
+-->Virtual function must be member of same class. 
+-->There cannot be static members
+-->virtual function can be friend of another functions
+-->they are accessed by using object pointers 
+-->virtual function in a base class must be defined even though it cant be used
+-->We can't have virtual constructors, but we can have virtual destructor.
+</p>
+>Function template (generic template)
+They are features of C++ which allows functions and classes to operate with generic type.
+
+<b>There are two types of templates</b>
+1. function template 
+2. class template.
+Single template deal with many generic data types.
+
+>Function Template
+Syntax-
+```
+template <class T,..>
+return_type func_name(arg)
+{
+    _//body of template function
+}
+
+```
+>Class Template
+
+Syntax-
+```
+template <class T,..>
+class class_name
+{
+    attributes
+    methods
+}
+```
+>Namespaces
+
+-->It is used to define a scope where identifiers like variables, functions, classes, etc are declared.
+-->The main purpose of using a namespace is to prevent ambiguity.
+-->It is similar to class definition the only differences is it doesn't end with a semicolon
+-->definition must be done at global scope on nested inside another space
+-->There can be UNnamed namespace too. 
+-->You cannot create instance of a namespace.
+--> they can be continued or extended over multiple files
+-->they do not override or redefined
+
+Syntax
+```
+namespace sample
+{
+    function name()
+    {
+
+    }
+}
+```
+to access the namespace use scope resolution operator 
+sample::function_name();
+
+>Using namespace in programming
+
+<b>Three ways </b>
+1. Using scope resolution 
+2. by using directive 
+3. by using declaration.
+
+>Files and Streams
+
+->fstream supports in simultaneous i/p and o/p operations on files
+->ifstream  provide i/p operation on files
+->ofstream provide o/p operations on files
+
+<b>Opening a file</b>
+
+ofstream/fstream is used to open a file for write
+ifstream is used to open a file for read
+
+syntax
+ void open(const char *filename,ios::open_mode mode);
+ -->const char *filename specifies the name and location of file to be opened
+ -->ios::open_mode mode defines the mode in which file should be opened
+
+ ios::app -> all output is appended to the end of file
+
+ ios::ate -> open file for output and move the read/write control to the eof
+
+ ios::in -> opens a file for reading
+
+ ios::out -> opens a file for writing
+
+ ios::trunc -> if file already exists its contents will be truncated before opening the file
+
+<b>Closing a file</b>
+
+Automatically closes all the open files and releases all the allocated memory.
+Using void close()
+
+<b>Writing a file</b>
+
+They use stream insertion operator.<<
+instead of cout we use ofstream or fstream
+
+ofstream<<a;
+
+<b>Reading a file</b>
+
+They use stream extraction operator.>>
+instead of cout we use ifstream or fstream
+
+ifstream>>a;
+
+>C++ Standard Exceptions
+
+-->C++ provides a list of standard exceptions defined in <exception></exception> which we can use in our programs
+-->These are arranged in parent child class hierarchy.
+-->C++ provides a range of built in exceptions. The base class for all exceptions classes is <b>exception</b>.
+-->All exception classes in C++ are derived from ```std::exception class```
+
+```
+std::exception
+
+#std::bad-alloc   
+#std::bad-cast   
+#std::bad-typeid   
+#std::bad-exception   
+#std::logic-failure   
+    std::domain error 
+    std::invalid argument.
+    std::length error.
+    std::out of range.
+#std::runtime-error
+    std::overflow-error.
+    std::range-error.
+    std::underflow-error.
+
+```
+
+std::exception -> Exception and parent class of all standard c++ exceptions.
+
+std::logic-failure -> It is an exception that can be detected by reading a code.
+
+std::runtime-error -> It is exception that cannot be detected by reading a code.
+
+std::bad-exception -> Days used to handle the unexpected exceptions in a C++ program.
+
+std::bad-cast -> The exception is generally thrown by a dynamic cast.
+
+std::bad-typeid -> The exception is generally thrown by a typeid.
+
+std::bad-alloc -> Exception thrown while using new keyword .//allocation fault
+
+>Exception Handling in C++ 
+
+It is a process of converting system error messages into user friendly error messages.
+In an event which occurs during the execution of a program, if there is a disruption during the normal flow of the program, it leads to errors. 
+
+Error can be classified into 2 types.
+
+1. compile time error
+-->library reference
+-->syntax errors
+-->incorrect class input
+2. runtime error. //exceptions
+-->user divides a number by zero leads to successful compilation but run time crash
+
+>Exception handling mechanisms
+
+```HTCH -> Hit throw catch handle.```
+
+1. Find a problem, hit the exception, 
+2. inform about occurrence throw the exception.
+3. Receive error information. Catch the exception. 
+4. Take proper action. Handle the exception.
+
+<b> Try Catch Throw </b>
+
+Syntax
+```
+    try
+    {
+        code---
+        throw parameter;
+    }
+    catch(exception ex)
+    {
+        code to handle exception
+    }
+```
+->for each exception there can be only one try block
+->catch block is intended to catch the error and handle the exception can hae multiple catch block
+->Throw keyword throws an exception encountered inside the try block. It communicates about the error.
+
+>Standard Template Library
+
+Set of c++ template classes and functions that That provide generic classes and functions.That can be used to implement data structures and algorithms.
+
+<b>Mainly composed of -</b>
+
+1. Containers
+->It is a way in which the stored data is organized in a memory.
+2. algorithms
+->Procedures applied to containers to process their data
+3. iterators
+->point to the element in the container
+4. function object
+->object that can access a function
+
+<b>Type of STL containers</b>
+
+1. Sequence containers
+
+Data is accessed in a sequential manner
+```
+    ->vector
+    ->deque
+    ->list
+```
+2. Associative containers
+
+Used to implement stored data structures and algorithms
+
+```
+    ->Map 
+    ->multi map 
+    ->set 
+    ->multi set.
+```
+3. Unordered Associative containers
+```
+    ->Unordered map 
+    ->unordered multi map 
+    ->unordered set 
+    ->unordered multiset.
+```
+4. Container Adapter
+```
+    ->Queue 
+    ->priority queue 
+    ->stack.
+```
+1. Vector containers
+
+-> same as dynamic arrays offers random access back insertion
+Syntax
+```
+int array[5]={0,1,2,3,4};
+vector<int>V(array,array+5);
+```
+
+functions of vector push(),pop()
+v.push_back(1);  //0 1 2 3 4 1
+v.pop_back(1);  // 0 1 2 3 4
+
+2. Deque 
+
+->double ended queue
+->fast insertion and deletion at both ends of the Queue
+
+syntax
+
+```deque <object_type>deque-name;```
+
+functions
+
+push_back() push_front() insert() pop_back() pop_front() empty() size() swap()
+
+3. List
+
+->traditionally linked list
+->can insert ay where
+
+syntax
+
+```list<data_type>list-name```
+
+functions
+
+push_back() push_front() insert() pop_back() pop_front() empty() size()  reverse() sort()
+
+4. map
+
+->used to replicate associative arrays
+->Contains stored key values, each key unique and cannot be changed.
+->can insert and delete but not alter
+->O(n) time complexity
+
+syntax
+
+```map<key_type,value_type>map-name```
+
+functions
+
+push_back() push_front() insert() pop_back() pop_front() empty() size()  reverse() sort()
+
+5. Queue
+
+->used to replicate queue in c++ 
+->insertion at back deletion at front
+
+syntax
+
+```queue<obj_type>queue-name```
+
+functions
+
+push() pop() empty() size() swap()
+
+6. Priority queue
+
+->just like normal queue except the element removed from the queue is always the greatest among all the element in the queue
+
+syntax
+
+```priority_queue<int>priority_queue-name```
+
+functions
+
+push() pop() size() swap()
+
+7. Stack
+
+->Insertion and deletion always performed at top of the stack.
+
+syntax
+
+```stack<obj_type>stack-name```
+
+functions
+
+push() pop() size() swap() top()
+
+>Algorithm in stl
+
+ALGORITHM library contains built in function that perform complex algorithm algorithm on the ds
+
+eg-> reverse() sort() binary_search()
+
+<b>Types of Algorithms</b>
+
+1. Sorting
+
+syntax
+```
+sort(start add, end add) 
+
+```
+2. Searching
+
+syntax
+```
+binary_search(start add, end add,value find) 
+```
+3. Modify
+
+copy fill move transform generate Swap swap_range reverse Rotate unique.
+
+4. Non Modify
+
+a. count ->Returns the number of values.
+
+syntax
+```
+count(first,last,value) 
+```
+b. equal ->Compares two elements into ranges.
+
+syntax
+```
+equal(first,last,value) 
+```
+c. mismatch ->It returns pair of iterators. First, iterate a pair points to the element in first container and second iterate pair points to the element in second container.
+
+syntax
+```
+mismatch(first1,last1,first2) 
+```
+here first1 and last1 iterators of 1st container specify range
+
+first2 iterator of 2nd container specifies position
+
+d. search ->Performs search for a given sequence in the given range.
+
+syntax
+```
+search(first1,last1,first2,last2)  
+```
+
+>numeric algorithm in STL
+
+1. IOTA method in STL
+
+The method assigns all successive element in the range[first,last].As in incremented values of element itself.
+
+syntax
+```
+iota(first,last,int val)  
+```
+
+2. accumulate method in STL
+
+This method performs all the operations on all elements in range[first,last] and stores the result into container result.
+
+syntax
+```
+accumulate(first,last,obj_type result,binary operator op)  
+```
+
+3. partial sum method in STL
+
+It assigns every method in range starting from the iterate are result of the operation in successive range from [first,last]
+
+syntax
+```
+partial_sum(first,last,iterator result,binary operator op)  
+```
+>Iterators in STL
+
+-->Iterators are used to point at the memory address of STL containers.
+-->They are primarily used in sequence of int and character etcetera. 
+-->They are used to reduce complexity and execution time of a program.
+
+syntax
+```
+container_type<parameter_list>::iterator iterator_name;
+```
+functions on Iterators
+
+1. advance() 
+
+->will increment the iterator i by the value of distance
+->if distance is negative the iterator wil be decremented
+
+syntax
+```
+advance(iterator i,int distance);
+```
+2. distance() 
+
+->Will return number of elements distance between the first and the last iterators.
+
+syntax
+```
+distance(iterator first,iterator last);
+```
+3. next() 
+
+->It will return Nth iteration to I. That is the iteration pointing to the nth element from the element pointed by I.
+
+syntax
+```
+next(iterator i,int n);
+```
+4. prev() 
+
+->It will return Nth predecessor to I. That is the iteration pointing to the nth predecessor from the element pointed by I.
+
+syntax
+```
+prev(iterator i,int n);
+```
+5. begin() 
+
+->start of given containers
+
+syntax
+```
+begin();
+```
+6. end()
+
+->end of given container
+
+syntax
+```
+end();
+```
+
+>Function Objects  (Functor)
+
+-->implements operator (refereed as call operator)
+
+-->mainly used as sorting criteria for containers and in Algorithms
+
+<b>Function objects provide two main advantages over a straight function call.</b>
+
+->Function object can contain state
+
+->Function Object is a type and therefore can be used as template parameter.
+
+```to create a function object, I need to create a type and implement the operator```
+
+>Manipulators
+
+Manipulators are special functions that are used to change certain characteristics of input and output. 
+
+```We use #include<iomanip.h>```
+
+<b>Some important manipulators</b>
+
+endl,hex,dec,oct,setbase,setw,setfill,setprecision,setfixed,ends,fush,setiosflags,resetiosflags,ws
+
+endl  -> An output manipulator that is used to generate a carriage return.
+
+setbase  -> It is used to convert the base of one numeric value into another base 
+
+setw  -> It is used to specify the minimum number of character position a variable will consume.
+
+```setw(int width)```
+
+setfill  -> It is used to specify a different character to fill the unused space.
+
+```setfill(char c)```
+
+setprecision  ->It is used with floating point number. You can set the number of digits printed to the right of decimal point.
+
+>user defined manipulators 
+
+syntax
+```
+ostream &m_name(ostream &o)
+{
+    //code
+    return 0;
+}
+```
